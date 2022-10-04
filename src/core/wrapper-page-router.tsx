@@ -12,7 +12,6 @@ export interface IWrapperPageRouter {
 const WrapperPageRouter: FC<IWrapperPageRouter> = ({ isPrivateAuthenticated, isPrivateUnauthenticated }) => {
   const { session } = useAppConnect();
 
-  console.log(session);
   if (!session && isPrivateAuthenticated) {
     return <Navigate to={PAGE_PATH.LOGIN} replace />;
   }
