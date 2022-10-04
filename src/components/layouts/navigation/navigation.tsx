@@ -4,9 +4,12 @@ import { Box, Flex } from '@chakra-ui/react';
 import { RiBodyScanLine } from 'react-icons/ri';
 import { IoCalculatorOutline, IoPeopleCircleOutline, IoFolderOutline, IoPersonCircleOutline } from 'react-icons/io5';
 import { useNavigatorContext } from 'contexts/navigate-context';
+import { PAGE_PATH } from 'constants/page-path';
+import { useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
   const { isVisible } = useNavigatorContext()!;
+  const navigate = useNavigate();
 
   if (!isVisible) {
     return null;
@@ -26,7 +29,7 @@ const Navigation = () => {
         <IoCalculatorOutline size={35} />
       </Box>
       <Box>
-        <IoPeopleCircleOutline size={35} />
+        <IoPeopleCircleOutline size={35} onClick={() => navigate(PAGE_PATH.ADD_USER)} />
       </Box>
       <Box>
         <Box bgColor='teal.200' p={3} borderRadius='50%' transform='translateY(-15px)'>

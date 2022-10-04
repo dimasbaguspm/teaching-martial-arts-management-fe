@@ -9,17 +9,17 @@ export interface IWrapperPageRouter {
   isPrivateAuthenticated?: boolean;
   isPrivateUnauthenticated?: boolean;
 }
-const WrapperPageRouter: FC<IWrapperPageRouter> = ({ isPrivateAuthenticated, isPrivateUnauthenticated }) => {
+const WrapperPageRouter: FC<IWrapperPageRouter> = ({ isPrivateUnauthenticated }) => {
   const { session } = useAppConnect();
 
-  if (!session && isPrivateAuthenticated) {
+  if (!session && isPrivateUnauthenticated) {
     return <Navigate to={PAGE_PATH.LOGIN} replace />;
   }
 
-  // user already connect, but they try to
-  if (session && isPrivateUnauthenticated) {
-    return <Navigate to={PAGE_PATH.DASHBOARD} replace />;
-  }
+  // // user already connect, but they try to
+  // if (session && isPrivateAuthenticated) {
+  //   return <Navigate to={PAGE_PATH.DASHBOARD} replace />;
+  // }
 
   return <Outlet />;
 };
